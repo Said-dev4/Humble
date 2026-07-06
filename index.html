@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUMBLE. | Stories that keep us Grounded</title>
+  <meta name="description" content="HUMBLE is an empathetic web community connecting people in Kenya and broader Africa through personal stories of resilience, emotional struggles, and peer advice.">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="app-container">
+    
+    <!-- HEADER AND NAVBAR -->
+    <header class="main-header">
+      <div class="header-container">
+        <a href="#/" class="logo" aria-label="Humble Logo">
+          <span>Hu</span><span>mb</span><span>le</span>
+        </a>
+        
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="#/feed" class="nav-link">Community Feed</a></li>
+            <li><a href="#/quiz" class="nav-link">Mood Check-In</a></li>
+            <li><a href="#/journal" class="nav-link">Private Journal</a></li>
+            <li><a href="#/helplines" class="nav-link">Local Helplines</a></li>
+          </ul>
+        </nav>
+        
+        <div class="auth-nav-group" id="auth-nav-container">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN SPA VIEWS -->
+    <main>
+      
+      <!-- 1. LANDING VIEW -->
+      <section id="view-landing" class="view-section active" style="position: relative;">
+        <!-- Sibling Hero Ambient Circles -->
+        <div class="hero-circle hc1" aria-hidden="true"></div>
+        <div class="hero-circle hc2" aria-hidden="true"></div>
+        <div class="hero-circle hc3" aria-hidden="true"></div>
+
+        <div class="landing-hero">
+          <div class="landing-text">
+            <div class="badge">
+              <span class="badge-dot" aria-hidden="true"></span>
+              A mental wellness community
+            </div>
+            
+            <!-- Reference Wordstack -->
+            <div class="wordstack" aria-label="Humble — Stories that keep us Grounded">
+              <span class="ws-word">Humble</span>
+              <span class="ws-word">Honest</span>
+              <span class="ws-word">Healing</span>
+            </div>
+            
+            <p class="landing-subtitle">
+              Stories that keep us Grounded...
+            </p>
+            
+            <div class="landing-actions">
+              <a href="#/signup" class="btn btn-primary">Start Your Journey</a>
+              <a href="#/feed" class="btn btn-secondary">Read Peer Stories &rarr;</a>
+            </div>
+            
+            <!-- Statistics from LandingSite Reference -->
+            <div class="landing-stats">
+              <div class="stat-item">
+                <div class="stat-value olive">12k+</div>
+                <div class="stat-label">Stories shared</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value cobalt">4,800</div>
+                <div class="stat-label">Community members</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value ember">91%</div>
+                <div class="stat-label">Feel less alone</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="landing-card-preview">
+            <div class="glass-panel story-card category-coping" style="opacity: 0.95; transform: scale(1.02); z-index: 2;">
+              <div class="story-card-header">
+                <div class="author-info">
+                  <div class="author-avatar" style="background-color: var(--olive);">A</div>
+                  <div class="author-meta">
+                    <span class="author-name">Amani_Hope</span>
+                    <span class="story-date">Today</span>
+                  </div>
+                </div>
+                <span class="story-badge story-badge-coping">Coping</span>
+              </div>
+              <h3 class="story-title">You are stronger than the silence</h3>
+              <p class="story-content" style="font-size:0.9rem;">Battling depression felt like swimming upstream. But finding a small community of peers who listened without advising right away saved me. Sharing here is the first step.</p>
+              <div class="story-actions" style="margin-bottom:0; padding-top:0.75rem;">
+                <span class="story-action-btn anchored" style="cursor:default;">❤️ Anchor (35)</span>
+                <span class="story-action-btn" style="cursor:default;">💬 Peer Advice (1)</span>
+              </div>
+            </div>
+
+            <div class="glass-panel story-card category-anxiety" style="opacity: 0.75; transform: scale(0.95) translateY(-10px); z-index: 2;">
+              <div class="story-card-header">
+                <div class="author-info">
+                  <div class="author-avatar" style="background-color: var(--cobalt);">A</div>
+                  <div class="author-meta">
+                    <span class="author-name">Anonymous</span>
+                    <span class="story-date">Yesterday</span>
+                  </div>
+                </div>
+                <span class="story-badge story-badge-anxiety">Anxiety</span>
+              </div>
+              <p class="story-content" style="font-size:0.9rem; margin-bottom: 0;">Unemployed firstborn, trying to support parents. Stressed out, but we will make it...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. LOGIN VIEW -->
+      <section id="view-login" class="view-section">
+        <div class="glass-panel auth-wrapper">
+          <div class="auth-header">
+            <h2>Welcome Back</h2>
+            <p>Log in to access your journal and participate in community discussions</p>
+          </div>
+          
+          <div class="auth-alert" id="login-error"></div>
+          
+          <form id="form-login">
+            <div class="form-group">
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" class="form-control" placeholder="name@domain.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Log In</button>
+          </form>
+          
+          <div class="auth-footer">
+            Don't have an account? <a href="#/signup">Sign up here</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SIGNUP VIEW -->
+      <section id="view-signup" class="view-section">
+        <div class="glass-panel auth-wrapper">
+          <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Join our safe mental health peer community in Kenya</p>
+          </div>
+          
+          <div class="auth-alert" id="signup-error"></div>
+          
+          <form id="form-signup">
+            <div class="form-group">
+              <label for="signup-username">Username (Publicly shown if not posting anonymously)</label>
+              <input type="text" id="signup-username" class="form-control" placeholder="e.g. Amani_Hope" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="signup-email">Email Address</label>
+              <input type="email" id="signup-email" class="form-control" placeholder="name@domain.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" class="form-control" placeholder="Minimum 6 characters" minlength="6" required>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="signup-anon-default" checked>
+              <label for="signup-anon-default" style="font-size:0.85rem; color:var(--color-text-secondary);">Default my feed posts to Anonymous</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Create Account</button>
+          </form>
+          
+          <div class="auth-footer">
+            Already have an account? <a href="#/login">Log in here</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. FEED VIEW -->
+      <section id="view-feed" class="view-section">
+        <div class="dashboard-layout">
+          
+          <!-- Sidebar categories -->
+          <aside class="glass-panel sidebar-nav">
+            <div class="sidebar-title">Categories</div>
+            <div class="sidebar-btn active" data-filter="all" onclick="setCategoryFilter('all')">🌐 All Vents</div>
+            <div class="sidebar-btn" data-filter="grief" onclick="setCategoryFilter('grief')">🤍 Grief</div>
+            <div class="sidebar-btn" data-filter="family pressure" onclick="setCategoryFilter('family pressure')">👨‍👩‍👧 Family Pressure</div>
+            <div class="sidebar-btn" data-filter="anxiety" onclick="setCategoryFilter('anxiety')">🌪️ Anxiety</div>
+            <div class="sidebar-btn" data-filter="coping" onclick="setCategoryFilter('coping')">🌱 Coping</div>
+          </aside>
+          
+          <!-- Feed story stream -->
+          <div class="feed-content">
+            
+            <!-- Publisher box -->
+            <div class="glass-panel story-publisher" id="feed-publisher-container">
+              <div class="publisher-header">
+                <span class="publisher-title">Share Your Vent / Story</span>
+                <span class="publisher-controls">Let it out. You are in a safe space.</span>
+              </div>
+              
+              <form id="form-post-story">
+                <div class="form-group">
+                  <input type="text" id="post-title" class="form-control" placeholder="Title of your story..." required>
+                </div>
+                
+                <div class="form-group">
+                  <textarea id="post-content" class="form-control" rows="4" placeholder="What is weighing on your mind today? Share details, thoughts, or emotions..." required></textarea>
+                </div>
+                
+                <div class="publisher-actions">
+                  <div style="display:flex; gap:1.5rem; align-items:center;">
+                    <div>
+                      <label for="post-category" style="font-size:0.75rem; font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.25rem;">Category</label>
+                      <select id="post-category" class="category-select">
+                        <option value="General">General</option>
+                        <option value="Grief">Grief</option>
+                        <option value="Family Pressure">Family Pressure</option>
+                        <option value="Anxiety">Anxiety</option>
+                        <option value="Coping">Coping</option>
+                      </select>
+                    </div>
+                    
+                    <div class="checkbox-group" style="margin-bottom:0; margin-top: 1rem;">
+                      <input type="checkbox" id="post-story-anon" checked>
+                      <label for="post-story-anon" style="font-size:0.85rem; color:var(--color-text-secondary); font-weight:600;">Post Anonymously</label>
+                    </div>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary">Publish Story</button>
+                </div>
+              </form>
+            </div>
+            
+            <!-- Feed Headers & Chips (mobile responsive filter duplication) -->
+            <div class="feed-header">
+              <h2 class="feed-title">Community Voice</h2>
+              <div class="feed-filters">
+                <span class="filter-chip active" data-filter="all" onclick="setCategoryFilter('all')">All</span>
+                <span class="filter-chip" data-filter="grief" onclick="setCategoryFilter('grief')">Grief</span>
+                <span class="filter-chip" data-filter="family pressure" onclick="setCategoryFilter('family pressure')">Family</span>
+                <span class="filter-chip" data-filter="anxiety" onclick="setCategoryFilter('anxiety')">Anxiety</span>
+                <span class="filter-chip" data-filter="coping" onclick="setCategoryFilter('coping')">Coping</span>
+              </div>
+            </div>
+            
+            <!-- Stories list -->
+            <div id="feed-list" style="display:flex; flex-direction:column; gap:1.5rem;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. MOOD ASSESSMENT QUIZ -->
+      <section id="view-quiz" class="view-section">
+        <div class="quiz-wrapper">
+          
+          <!-- Intro section -->
+          <div class="glass-panel quiz-intro" id="quiz-intro-section">
+            <div class="badge">
+              <span class="badge-dot" aria-hidden="true"></span>
+              Self-Assessment Tool
+            </div>
+            <h2>Mental Health Screening</h2>
+            <p>
+              Take an interactive mental health assessment based on standard clinical indicators (PHQ-9 and GAD-7) to evaluate stress, anxiety, and depression. Rest assured, your answers are completely private and never leave your browser.
+            </p>
+            <button class="btn btn-primary" onclick="startQuiz()">Begin Assessment</button>
+          </div>
+          
+          <!-- Questions active section -->
+          <div class="glass-panel quiz-card" id="quiz-questions-section" style="display: none;">
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress" id="quiz-bar"></div>
+            </div>
+            
+            <div id="quiz-question-container">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+          
+          <!-- Results placeholder -->
+          <div id="quiz-results-view" style="display: none;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. PRIVATE JOURNAL VIEW -->
+      <section id="view-journal" class="view-section">
+        <div class="journal-layout">
+          
+          <!-- Form to compose new entry -->
+          <div class="glass-panel journal-compose">
+            <h3>New Journal Entry</h3>
+            <p style="color:var(--color-text-secondary); font-size:0.85rem; margin-bottom:1.5rem;">Write down how you feel. Keeping a diary helps track behavioral patterns over time.</p>
+            
+            <form id="form-journal">
+              <div class="form-group">
+                <label>How are you feeling today?</label>
+                <div class="mood-selector">
+                  <div class="mood-btn" onclick="selectMood('happy', this)">
+                    <span class="mood-emoji">😊</span>
+                    <span class="mood-label">Happy</span>
+                  </div>
+                  <div class="mood-btn" onclick="selectMood('calm', this)">
+                    <span class="mood-emoji">😌</span>
+                    <span class="mood-label">Calm</span>
+                  </div>
+                  <div class="mood-btn" onclick="selectMood('sad', this)">
+                    <span class="mood-emoji">😢</span>
+                    <span class="mood-label">Sad</span>
+                  </div>
+                  <div class="mood-btn" onclick="selectMood('anxious', this)">
+                    <span class="mood-emoji">😰</span>
+                    <span class="mood-label">Anxious</span>
+                  </div>
+                  <div class="mood-btn" onclick="selectMood('tired', this)">
+                    <span class="mood-emoji">😴</span>
+                    <span class="mood-label">Tired</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="journal-content">What's on your mind?</label>
+                <textarea id="journal-content" class="form-control" rows="8" placeholder="Start writing..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" style="width:100%;">Save Journal Entry</button>
+            </form>
+          </div>
+          
+          <!-- Historic entries list -->
+          <div>
+            <h3 class="journal-history-title">My Journey Logs</h3>
+            <div class="journal-history" id="journal-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. HELPLINES VIEW -->
+      <section id="view-helplines" class="view-section">
+        <div class="badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Kenyan Directory
+        </div>
+        <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--ink);">Mental Health Resources</h2>
+        <p style="color: var(--color-text-secondary); max-width: 600px; margin-bottom: 2rem;">
+          If you or someone you know is struggling with mental wellness, stress, or in a crisis, please connect with these verified professional organizations and support helplines in Kenya.
+        </p>
+        
+        <div class="helplines-grid" id="helplines-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-container">
+        <!-- Reference footer logo styling -->
+        <div class="footer-logo" aria-label="Humble Logo">
+          <span>Hu</span><span>mb</span><span>le</span>
+        </div>
+        
+        <ul class="footer-links">
+          <li><a href="#/feed">Feed</a></li>
+          <li><a href="#/quiz">Check-In</a></li>
+          <li><a href="#/journal">Journal</a></li>
+          <li><a href="#/helplines">Help Directory</a></li>
+        </ul>
+        
+        <div class="footer-copy">
+          &copy; 2026 <span>Hu</span><span>mb</span><span>le</span>. Empowering Peer Mental Health Support across Kenya and East Africa.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
